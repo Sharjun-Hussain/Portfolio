@@ -14,13 +14,20 @@ function Hero() {
       icon: <IconHome className="h-4 w-4 text-neutral-500 dark:text-white" />,
     },
     {
-      name: "About",
+      name: "About Me",
       link: "#about",
       icon: <IconUser className="h-4 w-4 text-neutral-500 dark:text-white" />,
     },
     {
-      name: "Contact",
-      link: "#contact",
+      name: "Projects",
+      link: "#projects",
+      icon: (
+        <IconMessage className="h-4 w-4 text-neutral-500 dark:text-white" />
+      ),
+    },
+    {
+      name: "Experiences",
+      link: "#experience",
       icon: (
         <IconMessage className="h-4 w-4 text-neutral-500 dark:text-white" />
       ),
@@ -53,17 +60,22 @@ function Hero() {
         }}
         className="text-2xl px-4 md:text-4xl lg:text-5xl font-bold text-neutral-700 dark:text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto "
       >
-        Hey there! I&apos;m Sharjun Hussain, a creative MERN developer .
+        Hey there! I&apos;m Joon, a creative Software Engineer.
         <Highlight className="text-black dark:text-white">
-          delivering cutting-edge web applications
+          delivering cutting-edge web applications & Mobile Applications
         </Highlight>
         <div className="m-10 flex justify-center text-center">
           <HoverBorderGradient
-            containerClassName="rounded"
+            containerClassName=" rounded-lg"
             as="button"
             className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
           >
-            <a href="mailto:sharjunhssain@outlook.com" className="text-xl">Let's have a conversation</a>
+            <a
+              href="mailto:sharjunhssain@outlook.com"
+              className=" text-xs md:text-lg"
+            >
+              Let&lsquo;s have a conversation
+            </a>
           </HoverBorderGradient>
         </div>
       </motion.h1>
