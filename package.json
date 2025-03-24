@@ -11,14 +11,21 @@
   "dependencies": {
     "@tabler/icons-react": "^3.11.0",
     "aceternity-ui": "^0.2.2",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.24",
+    "lucide-react": "^0.483.0",
     "mini-svg-data-uri": "^1.4.4",
+    "motion": "^12.5.0",
     "next": "14.2.5",
     "next-theme": "^0.1.5",
     "react": "^18",
     "react-dom": "^18",
-    "tailwind-merge": "^2.4.0"
+    "react-intersection-observer": "^9.16.0",
+    "react-type-animation": "^3.2.0",
+    "simplex-noise": "^4.0.3",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "^20",
