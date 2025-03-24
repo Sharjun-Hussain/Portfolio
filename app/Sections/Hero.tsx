@@ -37,7 +37,7 @@ const Hero = () => {
   const techStack = [
     { name: "React", icon: "⚛️" },
     { name: "Next.js", icon: "⏭️" },
-    { name: "TypeScript", icon: "📘" },
+    { name: "JavaScript", icon: "📘" },
     { name: "Node.js", icon: "🟢" },
     { name: "Tailwind", icon: "🎨" },
     { name: "GraphQL", icon: "📊" },
@@ -148,7 +148,7 @@ const Hero = () => {
                 digital experiences
               </span>{" "}
               that are fast, accessible, and visually stunning. With{" "}
-              {new Date().getFullYear() - 2015}+ years of transforming ideas
+              {new Date().getFullYear() - 2023}+ years of transforming ideas
               into{" "}
               <span className="text-purple-300 font-medium">
                 scalable solutions
@@ -297,18 +297,24 @@ const Hero = () => {
                   <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-2 text-xs sm:text-sm font-mono text-green-400">
                     <div className="flex">
                       <span className="text-gray-500 mr-2">1</span>
-                      <span className="text-purple-300">const</span>{" "}
+                      <span className="text-purple-300 me-1">const </span>{" "}
                       <span className="text-white">developer</span> = {"{"}
                     </div>
                     <div className="flex">
                       <span className="text-gray-500 mr-2">2</span>
                       <span className="ml-4 text-white">name:</span>{" "}
-                      <span className="text-yellow-300">Alex</span>,
+                      <span className="text-yellow-300">
+                        &quot;Sharjun Hussain&quot;
+                      </span>
+                      ,
                     </div>
                     <div className="flex">
                       <span className="text-gray-500 mr-2">3</span>
                       <span className="ml-4 text-white">skills:</span>{" "}
-                      <span className="text-blue-300">[React, Next.js]</span>,
+                      <span className="text-blue-300">
+                        [&quot;React&quot;, &quot;Next.js&quot;]
+                      </span>
+                      ,
                     </div>
                     <div className="flex">
                       <span className="text-gray-500 mr-2">4</span>
