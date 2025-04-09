@@ -10,7 +10,7 @@ export const AIContact = () => {
     },
   ]);
   const [input, setInput] = useState("");
-  const messagesEndRef = useRef(null);
+  const messagesEndRef = useRef<any>(null);
 
   const handleSend = () => {
     if (!input.trim()) return;

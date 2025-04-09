@@ -7,7 +7,7 @@ export const SecureContact = () => {
   const [isEncrypted, setIsEncrypted] = useState(true);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     setIsSubmitted(true);
     // Encryption would happen here in a real implementation

@@ -11,7 +11,7 @@ import softxpertz from "@/public/softxpertz.png";
 const ProjectsSection = () => {
   const [ref, inView] = useInView({ threshold: 0.1 });
   const controls = useAnimation();
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+  const [hoveredProject, setHoveredProject] = useState<any>();
 
   useEffect(() => {
     if (inView) controls.start("visible");
