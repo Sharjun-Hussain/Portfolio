@@ -2,6 +2,8 @@
 import { cn } from "@/app/lib/util";
 import { useMotionValue, motion, useMotionTemplate } from "framer-motion";
 import React from "react";
+import { BackgroundGradient } from "./background-gradient";
+import BackgroundEffect from "./Background-effect";
 
 export const HeroHighlight = ({
   children,
@@ -29,12 +31,18 @@ export const HeroHighlight = ({
   return (
     <div
       className={cn(
-        "relative h-[40rem] flex items-center bg-white dark:bg-black justify-center w-full group",
+        "relative h-[40rem] flex items-center bg-black justify-center w-full group",
         containerClassName
       )}
       onMouseMove={handleMouseMove}
     >
-      <div className="absolute inset-0 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]  pointer-events-none" />
+      <BackgroundEffect className="absolute -left-24 -top-24" />
+      <BackgroundEffect className="absolute right-[40px] -top-80 h-96 w-80" />
+      <BackgroundEffect className="absolute right-[40px] -bottom-12 opacity-75 h-[100px] w-[400px]" />
+      {/* <BackgroundEffect className="absolute -left-24 -top-24" />
+      <BackgroundEffect className="absolute -left-24 -top-24" />
+      <BackgroundEffect className="absolute -left-24 -top-24" /> */}
+      {/* <div className="absolute inset-0 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]  pointer-events-none" /> */}
       <motion.div
         className="pointer-events-none bg-dot-thick-indigo-500 dark:bg-dot-thick-indigo-500   absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100"
         style={{
