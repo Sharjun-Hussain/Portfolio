@@ -9,10 +9,11 @@ const Hero = () => {
     threshold: 0.1,
     triggerOnce: false,
   });
-
+  const [hasMounted, setHasMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    setHasMounted(true);
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
@@ -57,49 +58,52 @@ const Hero = () => {
         transition={{ duration: 2 }}
         className="absolute inset-0 overflow-hidden"
       >
-        {[...Array(isMobile ? 5 : 10)].map((_, i) => (
-          <motion.div
-            key={i}
-            variants={floatingVariants}
-            initial="initial"
-            animate="animate"
-            className="absolute rounded-full bg-white opacity-10"
-            style={{
-              width: `${Math.random() * (isMobile ? 100 : 200) + 50}px`,
-              height: `${Math.random() * (isMobile ? 100 : 200) + 50}px`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-          />
-        ))}
+        {hasMounted &&
+          [...Array(isMobile ? 5 : 10)].map((_, i) => (
+            <motion.div
+              key={i}
+              variants={floatingVariants}
+              initial="initial"
+              animate="animate"
+              className="absolute rounded-full bg-white opacity-10"
+              style={{
+                width: `${Math.random() * (isMobile ? 100 : 200) + 50}px`,
+                height: `${Math.random() * (isMobile ? 100 : 200) + 50}px`,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+            />
+          ))}
       </motion.div>
 
       {/* Binary rain effect for tech vibe */}
-      <div className="absolute inset-0 overflow-hidden opacity-20 pointer-events-none">
-        {[...Array(isMobile ? 20 : 40)].map((_, i) => (
-          <motion.div
-            key={`binary-${i}`}
-            initial={{ y: -100, opacity: 0 }}
-            animate={{
-              y: [0, window.innerHeight + 100],
-              opacity: [0, 0.8, 0],
-            }}
-            transition={{
-              duration: Math.random() * 10 + 5,
-              delay: Math.random() * 5,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            className="absolute text-green-400 font-mono text-xs"
-            style={{
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-            }}
-          >
-            {Math.random() > 0.5 ? "1" : "0"}
-          </motion.div>
-        ))}
-      </div>
+      {hasMounted && (
+        <div className="absolute inset-0 overflow-hidden opacity-20 pointer-events-none">
+          {[...Array(isMobile ? 20 : 40)].map((_, i) => (
+            <motion.div
+              key={`binary-${i}`}
+              initial={{ y: -100, opacity: 0 }}
+              animate={{
+                y: [0, window.innerHeight + 100],
+                opacity: [0, 0.8, 0],
+              }}
+              transition={{
+                duration: Math.random() * 10 + 5,
+                delay: Math.random() * 5,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+              className="absolute text-green-400 font-mono text-xs"
+              style={{
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+              }}
+            >
+              {Math.random() > 0.5 ? "1" : "0"}
+            </motion.div>
+          ))}
+        </div>
+      )}
 
       <div className="container mx-auto py-20 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-12">
