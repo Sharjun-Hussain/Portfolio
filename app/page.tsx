@@ -13,7 +13,7 @@ import { AIContact } from "./Sections/FooterComponents/AICOntact";
 import { VideoContactCard } from "./Sections/FooterComponents/VideoBusinessCard";
 import { SecureContact } from "./Sections/FooterComponents/SecureCOntact";
 import { ARContactCard } from "./Sections/FooterComponents/ARContactCard";
-import { ContactSection } from "./Sections/Contact";
+import ContactSection from "./Sections/Contact";
 
 export default function Home() {
   return (

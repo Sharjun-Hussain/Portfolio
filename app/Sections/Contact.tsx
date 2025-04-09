@@ -1,175 +1,171 @@
-// components/ContactSection.tsx
 "use client";
 import { motion } from "framer-motion";
-import { FiMail, FiPhone, FiMapPin, FiSend } from "react-icons/fi";
+import { useRef } from "react";
+import {
+  FiMail,
+  FiPhone,
+  FiMapPin,
+  FiGithub,
+  FiLinkedin,
+  FiTwitter,
+} from "react-icons/fi";
 
-export const ContactSection = () => {
+const ContactSection = () => {
+  const formRef = useRef(null);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { y: 0, opacity: 1 },
+  };
+
+  const socialLinks = [
+    { icon: <FiGithub />, href: "#" },
+    { icon: <FiLinkedin />, href: "#" },
+    { icon: <FiTwitter />, href: "#" },
+  ];
+
   return (
-    <section className="py-20 bg-white dark:bg-gray-900" id="contact">
-      <div className="container mx-auto px-4 max-w-6xl">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
-          >
-            Get in{" "}
-            <span className="text-blue-600 dark:text-blue-400">Touch</span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
-          >
-            Have a project in mind or want to discuss opportunities? Reach out
-            and let&quot;s talk.
-          </motion.p>
-        </div>
+    <section className="min-h-screen bg-slate-900 py-20 px-4 md:px-8">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        variants={containerVariants}
+        viewport={{ once: true, margin: "-100px" }}
+        className="mx-auto max-w-6xl"
+      >
+        <motion.h2
+          variants={itemVariants}
+          className="text-4xl md:text-5xl font-bold text-white mb-12 text-center"
+        >
+          Get in Touch
+        </motion.h2>
 
-        <div className="flex flex-col lg:flex-row gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Contact Form */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="lg:w-1/2"
+            variants={itemVariants}
+            className="bg-slate-800 p-8 rounded-2xl shadow-xl"
+            whileHover={{ rotateY: 2, rotateX: -1 }}
+            transition={{ type: "spring", stiffness: 300 }}
           >
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 border border-gray-100 dark:border-gray-700">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">
-                Send a Message
-              </h3>
-              <form className="space-y-6">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                  >
-                    Your Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                  >
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                    required
-                  />
-                </div>
-
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  type="submit"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition-colors"
-                >
-                  <FiSend className="w-5 h-5" />
-                  Send Message
-                </motion.button>
-              </form>
-            </div>
+            <form ref={formRef} className="space-y-6">
+              <div>
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  className="w-full bg-slate-700 text-white rounded-lg px-4 py-3 focus:ring-2 focus:ring-purple-500 outline-none transition-all"
+                />
+              </div>
+              <div>
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  className="w-full bg-slate-700 text-white rounded-lg px-4 py-3 focus:ring-2 focus:ring-purple-500 outline-none transition-all"
+                />
+              </div>
+              <div>
+                <textarea
+                  placeholder="Your Message"
+                  rows={5}
+                  className="w-full bg-slate-700 text-white rounded-lg px-4 py-3 focus:ring-2 focus:ring-purple-500 outline-none transition-all"
+                />
+              </div>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white py-3 rounded-lg font-medium"
+              >
+                Send Message
+              </motion.button>
+            </form>
           </motion.div>
 
-          {/* Contact Info */}
+          {/* Contact Details */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="lg:w-1/2"
+            variants={containerVariants}
+            className="space-y-8 md:pl-8"
           >
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg p-8 h-full border border-gray-100 dark:border-gray-700">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">
-                Contact Information
-              </h3>
-
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-lg">
-                    <FiMail className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-gray-700 dark:text-gray-300">
-                      Email
-                    </h4>
-                    <a
-                      href="mailto:contact@example.com"
-                      className="text-blue-600 dark:text-blue-400 hover:underline"
-                    >
-                      sharjunhussain@outlook.com
-                    </a>
-                  </div>
+            <motion.div
+              variants={itemVariants}
+              className="bg-slate-800 p-6 rounded-2xl shadow-xl group hover:bg-slate-750 transition-colors"
+            >
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-purple-500 rounded-lg">
+                  <FiPhone className="text-white text-2xl" />
                 </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="bg-green-100 dark:bg-green-900/30 p-3 rounded-lg">
-                    <FiPhone className="w-5 h-5 text-green-600 dark:text-green-400" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-gray-700 dark:text-gray-300">
-                      Phone
-                    </h4>
-                    <a
-                      href="tel:+1234567890"
-                      className="text-green-600 dark:text-green-400 hover:underline"
-                    >
-                      +94 757 340 891
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="bg-purple-100 dark:bg-purple-900/30 p-3 rounded-lg">
-                    <FiMapPin className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-gray-700 dark:text-gray-300">
-                      Location
-                    </h4>
-                    <p className="text-gray-600 dark:text-gray-400">
-                      Dehiwala , COlombo
-                    </p>
-                  </div>
+                <div>
+                  <h3 className="text-white font-semibold text-xl mb-2">
+                    Phone
+                  </h3>
+                  <p className="text-slate-300">+1 (555) 123-4567</p>
                 </div>
               </div>
+            </motion.div>
 
-              {/* <div className="mt-12">
-                <h4 className="font-medium text-gray-700 dark:text-gray-300 mb-4">
-                  Business Hours
-                </h4>
-                <ul className="space-y-2 text-gray-600 dark:text-gray-400">
-                  <li className="flex justify-between">
-                    <span>Monday - Friday</span>
-                    <span>9:00 AM - 5:00 PM</span>
-                  </li>
-                  <li className="flex justify-between">
-                    <span>Saturday</span>
-                    <span>10:00 AM - 2:00 PM</span>
-                  </li>
-                  <li className="flex justify-between">
-                    <span>Sunday</span>
-                    <span>Closed</span>
-                  </li>
-                </ul>
-              </div> */}
-            </div>
+            <motion.div
+              variants={itemVariants}
+              className="bg-slate-800 p-6 rounded-2xl shadow-xl group hover:bg-slate-750 transition-colors"
+            >
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-purple-500 rounded-lg">
+                  <FiMail className="text-white text-2xl" />
+                </div>
+                <div>
+                  <h3 className="text-white font-semibold text-xl mb-2">
+                    Email
+                  </h3>
+                  <p className="text-slate-300">contact@yourportfolio.com</p>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={itemVariants}
+              className="bg-slate-800 p-6 rounded-2xl shadow-xl group hover:bg-slate-750 transition-colors"
+            >
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-purple-500 rounded-lg">
+                  <FiMapPin className="text-white text-2xl" />
+                </div>
+                <div>
+                  <h3 className="text-white font-semibold text-xl mb-2">
+                    Address
+                  </h3>
+                  <p className="text-slate-300">New York, NY 10001, USA</p>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div variants={itemVariants} className="flex gap-4 mt-8">
+              {socialLinks.map((link, index) => (
+                <motion.a
+                  key={index}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 bg-slate-700 rounded-lg hover:bg-purple-500 transition-colors"
+                  whileHover={{ scale: 1.1, rotate: 10 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <span className="text-white text-2xl">{link.icon}</span>
+                </motion.a>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
+
+export default ContactSection;
